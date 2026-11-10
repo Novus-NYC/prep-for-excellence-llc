@@ -6,7 +6,7 @@ import { capitalize, countWord } from "@/lib/format";
 import { photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
 import { contactHref, danceProgram, pathway, programs } from "@/lib/programs";
-import { routes, site } from "@/lib/site";
+import { routes } from "@/lib/site";
 
 const askAboutDance = {
   href: contactHref({ interest: danceProgram.slug }),
@@ -18,6 +18,12 @@ export const metadata = pageMetadata({
   description: `${pathway.headline}. ${pathway.description}`,
   path: routes.performingArts,
 });
+
+// The first pillar, restated beside the classes. The founder's own dance
+// career is told on the About page only: this page's hero photo shows a dancer
+// the sources do not name, and a sentence about the founder here would imply
+// the photo is of her.
+const training = pathway.pillars[0];
 
 // Staggered column offsets give the three pillars a sense of movement.
 const pillarOffsets = ["", "md:mt-14", "md:mt-28"];
@@ -121,8 +127,8 @@ export default function PerformingArtsPage() {
               {danceProgram.name}
             </h2>
             <p className="mt-5 max-w-xl text-lg">
-              {site.founder.name}, the founder of {site.name}, is a professional dancer. Ask about classes
-              for your school, organization or family.
+              {training.title}: {training.words.join(", ")}. Ask about classes for your school,
+              organization or family.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link href={askAboutDance.href} className="btn btn-action">
