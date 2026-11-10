@@ -34,8 +34,8 @@ export default function ProgramsPage() {
               <span className="block italic text-ink">{capitalize(countWord(formats.length))} formats.</span>
             </h1>
             <p className="mt-5 max-w-[34rem] text-lg lg:mt-7 lg:text-xl">
-              {site.promise} Choose a program, pick a format, then ask about bringing it to your school,
-              organization or family.
+              Choose a program, pick a format, then ask about bringing it to your school, organization
+              or family.
             </p>
           </div>
           <div className="lg:col-span-5">

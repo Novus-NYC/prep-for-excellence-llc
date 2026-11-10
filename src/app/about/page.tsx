@@ -1,5 +1,4 @@
 import Link from "next/link";
-import AudienceList from "@/components/audience-list";
 import ClosingCta from "@/components/closing-cta";
 import PhotoFrame from "@/components/photo-frame";
 import VendorDetails from "@/components/vendor-details";
@@ -123,20 +122,6 @@ export default function AboutPage() {
             <Link href={contactHref({ iam: "school" })} className="btn btn-action mt-9">
               Bring a program to your school
             </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-mint" aria-labelledby="serve-title">
-        <div className="shell grid gap-x-12 gap-y-8 py-16 lg:grid-cols-12 lg:py-24">
-          <div className="reveal lg:col-span-4">
-            <div className="letterhead mb-6 w-16 text-purple" aria-hidden="true" />
-            <h2 id="serve-title" className="font-display text-display-lg font-medium text-purple">
-              Who we serve
-            </h2>
-          </div>
-          <div className="lg:col-span-8">
-            <AudienceList />
           </div>
         </div>
       </section>

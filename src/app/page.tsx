@@ -52,12 +52,10 @@ export default function HomePage() {
               <span className="block">{site.positioning[0]}</span>{" "}
               <span className="block italic text-ink">{site.positioning[1]}</span>
             </h1>
+            {/* The promise sentence is the heading of the comparison section
+                further down, so the hero leads with the other published line. */}
             <p className="mt-4 max-w-[34rem] text-[1.0625rem] lg:mt-7 lg:text-xl">
-              {site.promise}
-              <span className="hidden sm:inline">
-                {" "}
-                {site.instagramSummary} for students, families and schools.
-              </span>
+              {site.instagramSummary} for students, families and schools.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-9">
               <Link href={primaryCta.href} className="btn btn-action">

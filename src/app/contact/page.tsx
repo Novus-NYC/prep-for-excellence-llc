@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import ContactForm from "@/components/contact-form";
 import ExternalLink from "@/components/external-link";
-import VendorDetails from "@/components/vendor-details";
 import { pageMetadata } from "@/lib/metadata";
 import { mailtoHref, primaryCta, routes, site, socialLinks } from "@/lib/site";
 
@@ -84,15 +83,6 @@ export default function ContactPage() {
               <ContactForm />
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-white" aria-labelledby="vendor-title">
-        <div className="shell py-14 lg:py-16">
-          <h2 id="vendor-title" className="reveal font-display text-display-md font-medium text-purple">
-            For schools
-          </h2>
-          <VendorDetails className="reveal mt-6 max-w-3xl" />
         </div>
       </section>
     </>
