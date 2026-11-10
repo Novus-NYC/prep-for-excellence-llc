@@ -51,3 +51,26 @@ export const photos = {
     alt: "Logos of past clients, including York College SEEK (CUNY), Talent Unlimited High School, Queens Public Library, I.S. 61 William A. Morris, NeON, Big Brothers Big Sisters of New York City, NY GEAR UP, LEAP (Leadership, Education & Athletics in Partnership) and P.S. 279.",
   },
 } satisfies Record<string, Photo>;
+
+// The past clients strip is one 1598 px wide file with fourteen logos in
+// three rows. On a phone the whole strip would shrink each logo to a
+// thumbnail, so below md the same file is shown as fourteen crop windows,
+// two or three to a row. Every window is the same size, so the logos keep
+// their relative scale. The centres were measured from the file (the bounding
+// box of each logo); the largest logo is 271 by 147 px and the windows never
+// reach a neighbouring logo.
+const logoCell = { w: 288, h: 160 };
+
+const logoRows: { centerY: number; centersX: number[] }[] = [
+  { centerY: 105, centersX: [172, 485, 799, 1109, 1426] },
+  { centerY: 284, centersX: [173, 490, 799, 1112, 1425] },
+  { centerY: 461, centersX: [331, 642, 955, 1273] },
+];
+
+export const pastClientLogos: CropRect[] = logoRows.flatMap((row) =>
+  row.centersX.map((centerX) => ({
+    x: centerX - logoCell.w / 2,
+    y: row.centerY - logoCell.h / 2,
+    ...logoCell,
+  })),
+);

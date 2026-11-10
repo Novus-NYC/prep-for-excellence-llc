@@ -3,11 +3,12 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import AudienceList from "@/components/audience-list";
 import ClosingCta from "@/components/closing-cta";
+import ImageCrop from "@/components/image-crop";
 import PhotoFrame from "@/components/photo-frame";
 import ScholarshipStat from "@/components/scholarship-stat";
 import VendorDetails from "@/components/vendor-details";
 import { countWord } from "@/lib/format";
-import { photos } from "@/lib/images";
+import { pastClientLogos, photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
 import { comparison, pathway } from "@/lib/programs";
 import { primaryCta, routes, site, socialLinks, statSentence } from "@/lib/site";
@@ -239,14 +240,35 @@ export default function HomePage() {
             Past clients
           </h2>
           <div className="reveal reveal-fade mt-8 border-y border-line py-6">
+            {/* From md up: the client's logo strip as one image. */}
             <Image
               src={photos.pastClients.src}
               alt={photos.pastClients.alt}
               width={photos.pastClients.width}
               height={photos.pastClients.height}
               sizes="(min-width: 1280px) 1184px, 100vw"
-              className="mx-auto h-auto w-full max-w-[1100px]"
+              className="mx-auto hidden h-auto w-full max-w-[1100px] md:block"
             />
+            {/* Below md: the same file, one crop window per logo, so each
+                logo is large enough to read. The group is one image to
+                assistive technology and carries the strip's alt text. */}
+            <div
+              role="img"
+              aria-label={photos.pastClients.alt}
+              className="grid grid-cols-2 justify-items-center gap-x-3 gap-y-1 sm:grid-cols-3 md:hidden"
+            >
+              {pastClientLogos.map((crop) => (
+                <ImageCrop
+                  key={`${crop.x}-${crop.y}`}
+                  src={photos.pastClients.src}
+                  width={photos.pastClients.width}
+                  height={photos.pastClients.height}
+                  crop={crop}
+                  alt=""
+                  sizes="(min-width: 640px) 170vw, 260vw"
+                />
+              ))}
+            </div>
           </div>
           <VendorDetails className="reveal mt-10 max-w-3xl" />
         </div>
