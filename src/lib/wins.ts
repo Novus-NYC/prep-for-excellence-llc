@@ -2,6 +2,8 @@
 // letter excerpt with the student's name hidden. Headlines, award names and
 // details are taken from the cards and the letter text, nothing more.
 
+import type { CropRect } from "./images";
+
 export type LetterImage = {
   src: string;
   // Natural size of the original file.
@@ -9,9 +11,11 @@ export type LetterImage = {
   height: number;
   // The letter excerpt inside the original card, in natural pixels. The card
   // is cropped with CSS so the file itself is untouched.
-  crop: { x: number; y: number; w: number; h: number };
+  crop: CropRect;
   alt: string;
-  caption: string;
+  // Only for something the section intro does not already say. The intro
+  // of each section carries the "excerpt" and privacy wording once.
+  caption: string | null;
 };
 
 export type Win = {
@@ -23,6 +27,8 @@ export type Win = {
   letter: LetterImage;
 };
 
+// Said once in the intro of each section on the Success Stories page. The
+// redaction bar after "Awarded to" is the cue on each individual win.
 export const privacyNote = "Student names hidden for privacy.";
 
 export const wins: Win[] = [
@@ -38,7 +44,7 @@ export const wins: Win[] = [
       height: 466,
       crop: { x: 51, y: 186, w: 698, h: 206 },
       alt: "Letter excerpt telling a Posse candidate that their application to Middlebury College has been accepted and welcoming them to the Class of 2030.",
-      caption: `Award letter excerpt. ${privacyNote}`,
+      caption: null,
     },
   },
   {
@@ -54,7 +60,7 @@ export const wins: Win[] = [
       height: 466,
       crop: { x: 51, y: 223, w: 698, h: 133 },
       alt: "Email excerpt congratulating a student, whose name is blacked out, on a 2023 Nora McNeely Hurley Leadership Scholarship from the USTA Foundation in the amount of $20,000.",
-      caption: `Award letter excerpt. ${privacyNote}`,
+      caption: null,
     },
   },
   {
@@ -70,7 +76,7 @@ export const wins: Win[] = [
       height: 466,
       crop: { x: 177, y: 169, w: 444, h: 241 },
       alt: "Letter excerpt offering conditional acceptance into Memorial Sloan Kettering’s Nursing Apprenticeship Program in partnership with CareerWise.",
-      caption: `Award letter excerpt. ${privacyNote}`,
+      caption: null,
     },
   },
   {
@@ -85,7 +91,7 @@ export const wins: Win[] = [
       height: 520,
       crop: { x: 119, y: 238, w: 561, h: 204 },
       alt: "Letter excerpt saying the student has been awarded the Coco Gauff Tennis Scholarship and that UNCF has issued $8,500 to Howard University for the 2025 Fall semester. One line is blacked out.",
-      caption: `Fall 2025 excerpt shown. ${privacyNote}`,
+      caption: "Fall 2025 excerpt shown.",
     },
   },
   {
@@ -100,7 +106,7 @@ export const wins: Win[] = [
       height: 520,
       crop: { x: 51, y: 294, w: 699, h: 91 },
       alt: "Letter excerpt saying the student has been selected to receive another bai Corporate Scholarship Award of $2,500, for 2024.",
-      caption: `Excerpt from the award letter. ${privacyNote}`,
+      caption: null,
     },
   },
   {
@@ -115,7 +121,7 @@ export const wins: Win[] = [
       height: 520,
       crop: { x: 51, y: 291, w: 699, h: 98 },
       alt: "Letter excerpt saying the student has been selected to receive a bai Corporate Scholarship Award of $2,500, for 2023.",
-      caption: `Excerpt from the award letter. ${privacyNote}`,
+      caption: null,
     },
   },
   {
@@ -131,7 +137,7 @@ export const wins: Win[] = [
       height: 520,
       crop: { x: 51, y: 255, w: 699, h: 169 },
       alt: "Letter excerpt congratulating the student on acceptance to the 2025 School of Theatre of the New York State Summer School of the Arts, held July 6 through August 1, 2025 at SUNY Fredonia.",
-      caption: `Excerpt from the award letter. ${privacyNote}`,
+      caption: null,
     },
   },
 ];

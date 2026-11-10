@@ -123,8 +123,10 @@
     border-bottom: 1px solid currentColor;
   }
 
-  /* A sheet of paper with a folded top right corner. --fold-bg is the
-     colour of the surface the sheet sits on. */
+  /* A sheet of paper. sheet-fold adds a folded top right corner, and
+     --fold-bg is the colour of the surface the sheet sits on. The fold sits
+     on top of the sheet's corner, so it is only for sheets with padding there
+     (the program lists and the contact form), never for a letter excerpt. */
   .sheet {
     @apply relative border border-line bg-white;
   }
@@ -137,6 +139,31 @@
     width: 1.75rem;
     height: 1.75rem;
     background: linear-gradient(225deg, var(--fold-bg, #fff) 50%, #d8cfe8 50%);
+  }
+
+  /* Award letter excerpts. Below lg the excerpt keeps its natural pixel
+     width (--letter-w, set per letter) so the text stays readable, and its
+     sheet scrolls sideways when the column is narrower than that. From lg up
+     the excerpt scales with its column. */
+  .letter {
+    container-type: inline-size;
+  }
+
+  .letter-window {
+    min-width: var(--letter-w);
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .letter-window {
+      min-width: 0;
+    }
+  }
+
+  /* The scroll hint has height only while the sheet (the letter plus its
+     1px borders) is wider than the figure, measured with a container unit. */
+  .letter-hint {
+    overflow: hidden;
+    max-height: clamp(0px, calc((var(--letter-w) + 2px - 100cqw) * 1000), 4rem);
   }
 
   /* Redaction bar, the quiet motif taken from the award letters. */

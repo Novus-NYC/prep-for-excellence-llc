@@ -9,6 +9,9 @@ export type Photo = {
   alt: string;
 };
 
+// A rectangle inside an image file, in natural pixels (see ImageCrop).
+export type CropRect = { x: number; y: number; w: number; h: number };
+
 export const photos = {
   headshot: {
     src: "/images/shawnia-yon-headshot.jpg",

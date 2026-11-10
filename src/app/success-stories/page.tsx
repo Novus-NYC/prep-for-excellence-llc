@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import ClosingCta from "@/components/closing-cta";
 import LetterExcerpt from "@/components/letter-excerpt";
 import ScholarshipStat from "@/components/scholarship-stat";
@@ -85,12 +84,7 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* The old site called this group the Proof Gallery. */}
-      <section
-        id="proof-gallery"
-        className="bg-mint"
-        aria-labelledby="proof-title"
-        style={{ "--fold-bg": "#E8F6EE" } as CSSProperties}
-      >
+      <section id="proof-gallery" className="bg-mint" aria-labelledby="proof-title">
         <div className="shell py-14 lg:py-20">
           <div className="reveal max-w-3xl pb-10 lg:pb-14">
             <div className="letterhead mb-6 w-16 text-purple" aria-hidden="true" />
