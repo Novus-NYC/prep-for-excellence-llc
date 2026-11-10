@@ -83,7 +83,7 @@ export default function HomePage() {
               blockX="0.75rem"
               blockY="-0.75rem"
             />
-            <div className="on-dark relative max-w-[694px] bg-purple-deep px-5 py-4 lg:absolute lg:-bottom-20 lg:-left-10 lg:w-[18.5rem] lg:px-6 lg:py-6 xl:-bottom-16 xl:w-[21rem] xl:px-7">
+            <div className="on-dark relative max-w-[694px] bg-purple-deep px-5 py-4 lg:-mt-12 lg:ml-auto lg:mr-[-0.75rem] lg:w-[18.5rem] lg:px-6 lg:py-6 xl:w-[21rem] xl:px-7">
               <ScholarshipStat figureClassName="text-[3.25rem] xl:text-[3.75rem]" />
             </div>
           </div>
