@@ -25,6 +25,9 @@ type PhotoFrameProps = {
   blockX?: string;
   blockY?: string;
   reveal?: boolean;
+  // The frame has no intrinsic width (its image is absolutely positioned),
+  // so its parent must give it a definite width. Align it with margins here,
+  // never with justify-self on a shrink-to-fit wrapper.
   className?: string;
 };
 

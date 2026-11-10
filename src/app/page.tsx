@@ -44,7 +44,7 @@ export default function HomePage() {
       {/* Hero: the positioning statement as the opening line of a letter,
           the founder with a student, and the scholarship total. */}
       <section className="bg-mint">
-        <div className="shell grid gap-x-12 gap-y-8 pb-10 pt-7 sm:pt-10 lg:grid-cols-12 lg:pb-28 lg:pt-16">
+        <div className="shell grid gap-x-12 gap-y-8 pb-10 pt-7 sm:pt-10 lg:grid-cols-12 lg:pb-32 lg:pt-16">
           <div className="lg:col-span-7">
             <p className="max-w-md text-base font-semibold leading-snug text-green-text">{site.tagline}</p>
             <h1 className="mt-4 font-display text-display-xl font-medium tracking-[-0.02em] text-purple lg:mt-6">
@@ -83,7 +83,7 @@ export default function HomePage() {
               blockX="0.75rem"
               blockY="-0.75rem"
             />
-            <div className="on-dark relative max-w-[720px] bg-purple-deep px-5 py-4 lg:absolute lg:-bottom-14 lg:-left-10 lg:w-[18.5rem] lg:px-6 lg:py-6 xl:w-[21rem] xl:px-7">
+            <div className="on-dark relative max-w-[720px] bg-purple-deep px-5 py-4 lg:absolute lg:-bottom-20 lg:-left-10 lg:w-[18.5rem] lg:px-6 lg:py-6 xl:-bottom-16 xl:w-[21rem] xl:px-7">
               <ScholarshipStat figureClassName="text-[3.25rem] xl:text-[3.75rem]" />
             </div>
           </div>
@@ -272,7 +272,9 @@ export default function HomePage() {
               Read {site.founder.firstName}’s story
             </Link>
           </div>
-          <div className="md:col-span-5 md:justify-self-end lg:col-span-4">
+          <div className="md:col-span-5 lg:col-span-4 lg:col-start-9">
+            {/* Right-aligned with a margin on the frame itself. The frame has no
+                intrinsic width, so its wrapper must keep the full column. */}
             <PhotoFrame
               photo={photos.headshot}
               aspect="aspect-[4/5]"
@@ -282,6 +284,7 @@ export default function HomePage() {
               block="purple"
               blockX="0.75rem"
               blockY="0.75rem"
+              className="md:ml-auto"
             />
           </div>
         </div>

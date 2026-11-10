@@ -45,7 +45,7 @@ export default function PerformingArtsPage() {
               </Link>
             </div>
           </div>
-          <div className="[grid-area:photo] md:justify-self-end md:py-2">
+          <div className="[grid-area:photo] md:py-2">
             {/* 533 px original: a tall narrow frame, never full bleed. */}
             <PhotoFrame
               photo={photos.dancerLeap}
@@ -57,6 +57,7 @@ export default function PerformingArtsPage() {
               block="green"
               blockX="0.5rem"
               blockY="0.5rem"
+              className="md:ml-auto"
             />
           </div>
         </div>

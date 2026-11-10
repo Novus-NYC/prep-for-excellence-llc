@@ -38,7 +38,7 @@ export default function AboutPage() {
             </blockquote>
             <figcaption className="sr-only">{founder.name}</figcaption>
           </figure>
-          <div className="[grid-area:photo] md:justify-self-end md:py-2">
+          <div className="[grid-area:photo] md:py-2">
             <PhotoFrame
               photo={photos.headshot}
               aspect="aspect-[2/3]"
@@ -50,6 +50,7 @@ export default function AboutPage() {
               block="purple"
               blockX="0.5rem"
               blockY="0.5rem"
+              className="md:ml-auto"
             />
           </div>
         </div>
