@@ -66,10 +66,15 @@ export default function SiteFooter() {
             </ul>
             {site.address ? <p className="mt-3 text-base text-lav">{site.address}</p> : null}
 
-            <p className="mt-6 border-t border-white/25 pt-4 text-base text-lav">
-              {site.doe.status} | Vendor ID:{" "}
-              <span className="whitespace-nowrap">{site.doe.vendorId}</span> | {site.doe.mwbe}
-            </p>
+            {/* One fact per line, so no separator can end a line and no fact
+                can break in the middle. */}
+            <ul className="mt-6 border-t border-white/25 pt-4 text-base text-lav">
+              <li>{site.doe.status}</li>
+              <li>
+                Vendor ID: <span className="whitespace-nowrap">{site.doe.vendorId}</span>
+              </li>
+              <li>{site.doe.mwbe}</li>
+            </ul>
           </div>
         </div>
 

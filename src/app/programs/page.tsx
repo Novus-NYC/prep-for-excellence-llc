@@ -145,7 +145,8 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Formats, set like the tick boxes on a reply form. */}
+      {/* Formats: a plain list with hairlines and the green square marker.
+          Nothing here is a control, so nothing looks like one. */}
       <section className="bg-white" aria-labelledby="formats-title">
         <div className="shell grid gap-x-12 gap-y-8 py-16 lg:grid-cols-12 lg:py-24">
           <div className="reveal lg:col-span-4">
@@ -163,14 +164,14 @@ export default function ProgramsPage() {
               </a>
             </p>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8 lg:content-start">
+          <ul className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8 lg:content-start">
             {formats.map((format, index) => (
               <li
                 key={format}
-                className="reveal flex min-h-[4.5rem] items-center gap-4 border border-rule px-5 py-4 text-lg font-semibold text-ink"
+                className="reveal flex items-center gap-3.5 border-t border-line py-5 text-lg font-semibold leading-snug text-ink"
                 style={{ "--i": index } as CSSProperties}
               >
-                <span aria-hidden="true" className="h-5 w-5 shrink-0 border-2 border-purple" />
+                <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-green" />
                 {format}
               </li>
             ))}

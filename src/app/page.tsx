@@ -47,7 +47,10 @@ export default function HomePage() {
       <section className="bg-mint">
         <div className="shell grid gap-x-12 gap-y-8 pb-10 pt-7 sm:pt-10 lg:grid-cols-12 lg:pb-32 lg:pt-16">
           <div className="lg:col-span-7">
-            <p className="max-w-md text-base font-semibold leading-snug text-green-text">{site.tagline}</p>
+            {/* Balanced so a wrapped tagline never leaves one word on its own line. */}
+            <p className="max-w-md text-base font-semibold leading-snug text-green-text [text-wrap:balance] lg:max-w-none">
+              {site.tagline}
+            </p>
             <h1 className="mt-4 font-display text-display-xl font-medium tracking-[-0.02em] text-purple lg:mt-6">
               <span className="block">{site.positioning[0]}</span>{" "}
               <span className="block italic text-ink">{site.positioning[1]}</span>
