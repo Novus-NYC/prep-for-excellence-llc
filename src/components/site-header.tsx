@@ -116,7 +116,6 @@ export default function SiteHeader() {
               width={site.logo.width}
               height={site.logo.height}
               sizes="48px"
-              priority
               className="h-11 w-auto nav:h-12"
             />
             <span className="whitespace-nowrap font-display text-[1.125rem] font-semibold tracking-tight text-purple max-[359px]:sr-only sm:text-[1.3125rem]">

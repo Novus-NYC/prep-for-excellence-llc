@@ -10,12 +10,6 @@ export type Photo = {
 };
 
 export const photos = {
-  founderWithStudent: {
-    src: "/images/founder-with-student.png",
-    width: 727,
-    height: 800,
-    alt: "Shawnia Yon, in a green dress and black blazer, smiling beside a student in a Farmingdale State College shirt who is holding a Farmingdale State College poster. The student’s face is blurred.",
-  },
   headshot: {
     src: "/images/shawnia-yon-headshot.jpg",
     width: 533,

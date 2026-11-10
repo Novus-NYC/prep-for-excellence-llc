@@ -132,7 +132,7 @@ Code layout:
 ## 4. Decisions and exceptions
 
 1. **Program descriptions are not written.** The client publishes only the service names. Each `description` in `src/lib/programs.ts` is `null` and the UI hides it. The three published comparison points are shown once on the Programs page instead of being assigned to individual services, because the source does not say which point belongs to which service.
-2. **Hero photo crop.** `founder-with-student.png` has a first name and initial written on the bottom edge of the poster. The photo is always cropped from the top with CSS (the frame is never taller than 727:640), so that line is out of frame, and on desktop the stat slab also sits over that corner. The file itself is unmodified (byte for byte, as required), so the name is still inside the image file. See open item 9.
+2. **Hero photo.** The hero uses `workshop-room.jpg` (Shawnia presenting, student faces already covered). The Farmingdale photo (`founder-with-student.png`) was removed from the site: the poster in it shows a student’s first name and initial, and a CSS crop would still leave the name in the published file.
 3. **One allowed photo is not used.** The classroom photo taken from the back of the room (source image 10) shows a surname on the back of a student's jersey. It was left out.
 4. **The leaping dancer is not placed on the About page.** The source does not say who the dancer is, and placing the photo beside the founder's bio would imply it is her. It is used on the home teaser and the Performing Arts hero, with alt text that names no one.
 5. **Award cards are cropped to the letter excerpt.** The Canva cards carry their own purple header and caption. The page sets the headline, award and privacy note as real text and shows only the excerpt, through a CSS crop window (`src/components/letter-excerpt.tsx`). Files are untouched and no excerpt is rendered wider than its natural pixel width.
@@ -180,7 +180,7 @@ Not done (per the brief, no browser tools were used):
 6. **Service area.** Where programs run (boroughs, in person or virtual). The site makes no claim today.
 7. **Three photos with visible children** (classroom with a man and a girl, dance class on stage, dance group with certificates) were not used. They need a guardian's approval or blurring first.
 8. **Past clients.** The full client list, and permission to show each logo. Five items in the strip were too small to read and are not named in the alt text.
-9. **Hero photo privacy.** The poster in the Farmingdale photo shows a student's first name and initial at the bottom. It is cropped out on the page, but it is still in the image file. Please supply a version with that line removed, or approve the photo as it is.
+9. **Farmingdale photo.** Not used, because the poster shows a student’s first name and initial. Please supply a version with the name covered, or confirm the student and family consent, if you want it on the site.
 10. **Jersey photo.** The classroom photo from the back of the room shows a surname on a jersey and was left out. Supply a version with it covered if the photo should be used.
 11. **St. John's University founder profile link** in the assignment returns 404. Is there a current link?
 12. **YouTube URL.** The Linktree lists a channel but the address could not be read.

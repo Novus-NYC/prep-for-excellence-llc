@@ -69,13 +69,13 @@ export default function HomePage() {
           </div>
 
           <div className="relative lg:col-span-5 lg:pt-3">
-            {/* Cropped from the top with CSS so the bottom edge of the poster
-                stays out of frame. */}
+            {/* The workshop photo: Shawnia presenting, student faces already covered.
+                Anchored left so she stays in frame when the crop narrows. */}
             <PhotoFrame
-              photo={photos.founderWithStudent}
-              aspect="aspect-[3/2] lg:aspect-[727/640]"
-              position="object-top"
-              maxWidth={720}
+              photo={photos.workshopRoom}
+              aspect="aspect-[3/2] lg:aspect-[4/3]"
+              position="object-left"
+              maxWidth={694}
               sizes="(min-width: 1024px) 480px, 100vw"
               priority
               reveal={false}
@@ -83,7 +83,7 @@ export default function HomePage() {
               blockX="0.75rem"
               blockY="-0.75rem"
             />
-            <div className="on-dark relative max-w-[720px] bg-purple-deep px-5 py-4 lg:absolute lg:-bottom-20 lg:-left-10 lg:w-[18.5rem] lg:px-6 lg:py-6 xl:-bottom-16 xl:w-[21rem] xl:px-7">
+            <div className="on-dark relative max-w-[694px] bg-purple-deep px-5 py-4 lg:absolute lg:-bottom-20 lg:-left-10 lg:w-[18.5rem] lg:px-6 lg:py-6 xl:-bottom-16 xl:w-[21rem] xl:px-7">
               <ScholarshipStat figureClassName="text-[3.25rem] xl:text-[3.75rem]" />
             </div>
           </div>
