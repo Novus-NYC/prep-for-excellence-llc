@@ -28,9 +28,6 @@ export type SiteConfig = {
   email: string;
   phone: string | null;
   address: string | null;
-  hours: string | null;
-  serviceArea: string | null;
-  pricing: string | null;
   founder: {
     name: string;
     firstName: string;
@@ -76,11 +73,10 @@ export const site: SiteConfig = {
   legalName: "Prep For Excellence LLC",
   url: (configuredUrl || "http://localhost:3000").replace(/\/$/, ""),
   email: "prep4excellence@gmail.com",
+  // Phone and address are not published. Filling one in shows it in the
+  // footer and on the Contact page.
   phone: null,
   address: null,
-  hours: null,
-  serviceArea: null,
-  pricing: null,
   founder: {
     name: "Shawnia Yon",
     firstName: "Shawnia",

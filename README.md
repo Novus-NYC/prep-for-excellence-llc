@@ -52,19 +52,19 @@ npm run typecheck
 | `src/lib/images.ts` | Photos and their alt text |
 | `public/images/` | The image files (originals from the client, copied unchanged) |
 
-Anything the client has not confirmed is `null` in `src/lib/site.ts`, and the part of the page that would show it stays hidden until a value is filled in. For example, setting `phone` makes the phone number appear in the footer and on the Contact page.
+Anything the client has not confirmed is `null` in `src/lib/site.ts`, and the part of the page that would show it stays hidden until a value is filled in. Three fields work this way: `phone` and `address` (footer and Contact page) and `socials.youtube` (social links). Hours, service area and pricing have no field or UI yet.
 
 Links can preselect the contact form: `/contact?iam=student`, `/contact?iam=parent`, `/contact?iam=school`, and `&interest=` with a service slug from `src/lib/programs.ts` (for example `/contact?iam=school&interest=dance`).
 
 ## Deployment
 
-Deploy on Vercel as a standard Next.js project. Set one environment variable:
+Deploy on Vercel as a standard Next.js project. Set one environment variable once the real domain is known:
 
 ```
 NEXT_PUBLIC_SITE_URL=https://the-real-domain.example
 ```
 
-It is used for canonical URLs, Open Graph URLs, the sitemap and `robots.txt`. Without it they fall back to `https://example.com`.
+It is used for canonical URLs, Open Graph URLs, the sitemap, `robots.txt` and the Organization structured data. Without it, a Vercel deploy uses the project's production domain (`VERCEL_PROJECT_PRODUCTION_URL`). With neither, as in a local build, URLs resolve against `http://localhost:3000`, and the structured data and `robots.txt` leave the site address out.
 
 After replacing an image that keeps the same filename, delete `.next/cache/images` so the old optimized copy is not served.
 

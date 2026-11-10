@@ -43,7 +43,7 @@ export default function HomePage() {
       />
 
       {/* Hero: the positioning statement as the opening line of a letter,
-          the founder with a student, and the scholarship total. */}
+          the workshop photo, and the scholarship total. */}
       <section className="bg-mint">
         <div className="shell grid gap-x-12 gap-y-8 pb-10 pt-7 sm:pt-10 lg:grid-cols-12 lg:pb-32 lg:pt-16">
           <div className="lg:col-span-7">
