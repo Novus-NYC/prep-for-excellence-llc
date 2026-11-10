@@ -2,6 +2,19 @@
 // client's published material (see BUILD_NOTES.md). Anything the client has
 // not published is null, and the UI that would show it hides itself.
 
+// The public address of the site: NEXT_PUBLIC_SITE_URL when it is set,
+// otherwise the production domain Vercel gives the project. With neither
+// there is no real address, so `site.url` falls back to localhost (never a
+// plausible looking domain) and `siteUrlIsSet` tells the structured data and
+// robots.txt to leave the address out.
+const configuredUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "");
+
+export const siteUrlIsSet = configuredUrl !== "";
+
 export type SocialLink = {
   label: string;
   handle: string;
@@ -61,8 +74,7 @@ export type SiteConfig = {
 export const site: SiteConfig = {
   name: "Prep For Excellence",
   legalName: "Prep For Excellence LLC",
-  // Production URL is not known yet. Set NEXT_PUBLIC_SITE_URL on the host.
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com").replace(/\/$/, ""),
+  url: (configuredUrl || "http://localhost:3000").replace(/\/$/, ""),
   email: "prep4excellence@gmail.com",
   phone: null,
   address: null,

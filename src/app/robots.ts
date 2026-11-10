@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
+import { site, siteUrlIsSet } from "@/lib/site";
 
+// The sitemap line needs the real address, so it is left out until one is set.
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: `${site.url}/sitemap.xml`,
+    ...(siteUrlIsSet ? { sitemap: `${site.url}/sitemap.xml` } : {}),
   };
 }

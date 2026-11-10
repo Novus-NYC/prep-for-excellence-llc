@@ -11,7 +11,7 @@ import { countWord } from "@/lib/format";
 import { pastClientLogos, photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
 import { comparison, pathway } from "@/lib/programs";
-import { primaryCta, routes, site, socialLinks, statSentence } from "@/lib/site";
+import { primaryCta, routes, site, siteUrlIsSet, socialLinks, statSentence } from "@/lib/site";
 import { headlineWins, wins, winsIntro } from "@/lib/wins";
 
 export const metadata = pageMetadata({
@@ -26,8 +26,8 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: site.name,
   legalName: site.legalName,
-  url: site.url,
-  logo: `${site.url}${site.logo.src}`,
+  // Only a real address goes into structured data.
+  ...(siteUrlIsSet ? { url: site.url, logo: `${site.url}${site.logo.src}` } : {}),
   email: site.email,
   slogan: site.positioning.join(" "),
   founder: { "@type": "Person", name: site.founder.name },
