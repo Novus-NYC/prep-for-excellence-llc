@@ -2,11 +2,307 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  padding: 0;
-  margin: 0;
+/* Custom properties live on :root only (an html {} rule would lose to it). */
+:root {
+  --header-h: 4rem;
+  --focus: #4b2a86;
+  --ink: #1d1033;
 }
 
-* {
-  box-sizing: border-box;
+@media (min-width: 1100px) {
+  :root {
+    --header-h: 4.75rem;
+  }
+}
+
+@layer base {
+  html {
+    /* The single anchor offset for the sticky header (plus its 1px border). */
+    scroll-padding-top: calc(var(--header-h) + 1px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: #a5ebc1;
+    color: #1d1033;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8;
+  }
+
+  /* Small uppercase labels. Never used for essential information. */
+  .label {
+    @apply text-label font-semibold uppercase;
+  }
+
+  /* Surfaces that need a different focus ring colour. On purple surfaces a
+     near-black redaction bar would disappear (1.2:1 to 1.7:1), so the bar
+     turns pale lavender there (7:1 or better). */
+  .on-dark {
+    --focus: #a5ebc1;
+    --bar: #d9ccf2;
+  }
+
+  .on-green {
+    --focus: #1d1033;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 border-2 px-6 py-2.5 text-center text-base font-semibold leading-tight no-underline;
+    border-radius: 2px;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+  }
+
+  /* Primary action: brand green with ink text (6.82:1). */
+  .btn-action {
+    @apply border-ink bg-green text-ink hover:bg-mint-ink;
+  }
+
+  /* Primary action on the green band. */
+  .btn-ink {
+    @apply border-ink bg-ink text-white hover:bg-purple-deep;
+  }
+
+  /* Secondary action on light surfaces. */
+  .btn-outline {
+    @apply border-purple bg-transparent text-purple hover:bg-purple hover:text-white;
+  }
+
+  /* Secondary action on purple surfaces. */
+  .btn-outline-light {
+    @apply border-white bg-transparent text-white hover:bg-white hover:text-purple-deep;
+  }
+
+  /* Inline text call to action with a 44 px target. */
+  .text-cta {
+    @apply inline-flex min-h-[2.75rem] items-center gap-2 font-semibold underline decoration-2 underline-offset-4;
+  }
+
+  .text-cta .arrow {
+    transition: transform 200ms ease;
+  }
+
+  .text-cta:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Letterhead rule: a heavy line with a hairline under it. */
+  .letterhead {
+    height: 7px;
+    border-top: 3px solid currentColor;
+    border-bottom: 1px solid currentColor;
+  }
+
+  /* A sheet of paper with a folded top right corner. --fold-bg is the
+     colour of the surface the sheet sits on. */
+  .sheet {
+    @apply relative border border-line bg-white;
+  }
+
+  .sheet-fold::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: linear-gradient(225deg, var(--fold-bg, #fff) 50%, #d8cfe8 50%);
+  }
+
+  /* Redaction bar, the quiet motif taken from the award letters. */
+  .bar {
+    display: inline-block;
+    height: 0.82em;
+    vertical-align: -0.08em;
+    background: var(--bar, var(--ink));
+  }
+
+  .form-field {
+    @apply block min-h-[3rem] w-full border border-rule bg-white px-3.5 py-2.5 text-base text-ink;
+    border-radius: 2px;
+  }
+
+  .form-field[aria-invalid="true"] {
+    @apply border-2 border-[#A3122E];
+  }
+}
+
+/* ---------- Scroll reveals ----------
+   Hidden states exist only under html.js (set by an inline script before
+   paint), so everything is visible without JavaScript and in print. */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* Opacity only: for hash targets and anything that must not shift. */
+html.js .reveal.reveal-fade {
+  transform: none;
+}
+
+/* Photo frames: the colour block behind a photo slides out to its offset. */
+html.js .reveal .frame-block {
+  transform: translate(0, 0);
+  transition: transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1) 150ms;
+}
+
+/* Redaction bars draw in from the left once their row is revealed. */
+html.js .reveal .bar {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 450ms cubic-bezier(0.6, 0, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 90ms + 300ms);
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .reveal.is-visible .frame-block {
+  transform: translate(var(--block-x, 0.875rem), var(--block-y, 0.875rem));
+}
+
+html.js .reveal.is-visible .bar {
+  transform: scaleX(1);
+}
+
+/* Without JavaScript the block simply sits at its offset. */
+.frame-block {
+  transform: translate(var(--block-x, 0.875rem), var(--block-y, 0.875rem));
+}
+
+/* Signature moment: a redaction bar lifts off the scholarship total. */
+.unredact {
+  position: relative;
+  display: inline-block;
+}
+
+html.js .unredact::after {
+  content: "";
+  position: absolute;
+  inset: 0.06em -0.04em 0.02em;
+  background: var(--bar, var(--ink));
+  transform: scaleX(0);
+  transform-origin: right center;
+  animation: unredact 650ms cubic-bezier(0.7, 0, 0.2, 1) 250ms backwards;
+}
+
+@keyframes unredact {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Mobile menu panel */
+.menu-panel {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease,
+    visibility 0s linear 250ms;
+}
+
+.menu-panel.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease,
+    visibility 0s;
+}
+
+/* Reduced motion: selectors mirror the rules above so nothing stays hidden. */
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal,
+  html.js .reveal.reveal-fade,
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html.js .reveal .frame-block,
+  html.js .reveal.is-visible .frame-block {
+    transform: translate(var(--block-x, 0.875rem), var(--block-y, 0.875rem));
+    transition: none;
+  }
+
+  html.js .reveal .bar,
+  html.js .reveal.is-visible .bar {
+    transform: none;
+    transition: none;
+  }
+
+  html.js .unredact::after {
+    animation: none;
+    display: none;
+  }
+
+  .menu-panel,
+  .menu-panel.is-open {
+    transform: none;
+    transition: none;
+  }
+
+  .btn,
+  .text-cta .arrow {
+    transition: none;
+  }
+}
+
+@media print {
+  html.js .reveal,
+  html.js .reveal.reveal-fade {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.js .reveal .bar {
+    transform: none;
+  }
+
+  html.js .unredact::after {
+    display: none;
+  }
 }
