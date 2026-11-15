@@ -5,7 +5,7 @@ import PhotoFrame from "@/components/photo-frame";
 import { capitalize, countWord } from "@/lib/format";
 import { photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
-import { comparison, contactHref, formats, pathway, programGroups, programs, workshopTiers, workshopTopics } from "@/lib/programs";
+import { comparison, contactHref, formats, individualServices, pathway, programGroups, programs, workshopTiers, workshopTopics } from "@/lib/programs";
 import { mailtoHref, routes, site } from "@/lib/site";
 
 const programNames = programs.map((program) => program.name).join(", ");
@@ -34,8 +34,7 @@ export default function ProgramsPage() {
               <span className="block italic text-ink">{capitalize(countWord(formats.length))} formats.</span>
             </h1>
             <p className="mt-5 max-w-[34rem] text-lg lg:mt-7 lg:text-xl">
-              Choose a program, pick a format, then ask about bringing it to your school, organization
-              or family.
+              Explore workshops for schools and organizations, dance classes, and individual support for students and families.
             </p>
           </div>
           <div className="lg:col-span-5">
@@ -51,6 +50,28 @@ export default function ProgramsPage() {
               blockY="-0.75rem"
             />
           </div>
+        </div>
+      </section>
+
+      <section id="individual-support" className="bg-mint" aria-labelledby="individual-title">
+        <div className="shell grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
+          <div className="reveal lg:col-span-4">
+            <p className="label text-green-text">For students & families</p>
+            <h2 id="individual-title" className="mt-4 font-display text-display-lg font-medium text-purple">One-on-one support</h2>
+            <p className="mt-4 max-w-sm text-lg">Current college students and students preparing for college can work directly with Prep For Excellence. Families can ask about the right service for their student.</p>
+            <Link href={contactHref({ interest: "individual-support" })} className="btn btn-action mt-7">Ask about 1:1 services</Link>
+          </div>
+          <ul className="sheet sheet-fold lg:col-span-8" style={{ "--fold-bg": "#E8F6EE" } as CSSProperties}>
+            {individualServices.map((service, index) => (
+              <li key={service.name} className={`px-6 py-5 lg:px-9 ${index > 0 ? "border-t border-line" : ""}`}>
+                <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+                  <h3 className="font-display text-xl font-medium text-purple">{service.name}</h3>
+                  <p className="shrink-0 text-sm font-semibold text-green-text">{service.price}</p>
+                </div>
+                <p className="mt-2 max-w-2xl text-base text-muted">{service.detail}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

@@ -73,6 +73,16 @@ export const danceOfferings = [
   { title: "Dance career workshops", detail: "LinkedIn for dancers, artist portfolios, scholarships, dance resumes, and social media for opportunities in the arts." },
 ] as const;
 
+export const individualServices = [
+  { name: "Regular 1:1 counseling", detail: "Personalized help with choosing schools, planning for college, and finding ways to thrive once there.", price: "$125/hour" },
+  { name: "Customized scholarship search", detail: "A list of 10 scholarships matched to the student's profile, with brief application recommendations.", price: "$300 flat fee" },
+  { name: "Essay & application review", detail: "Individual meetings to review scholarship essays and applications and identify ways to strengthen them.", price: "$125/hour, 2-hour minimum" },
+  { name: "Resume curation", detail: "A review and refined version of the student's current resume for scholarships, campus work, and other opportunities.", price: "$200 flat fee" },
+  { name: "LinkedIn curation", detail: "Guidance on building a profile for networking and professional opportunities.", price: "$75/hour" },
+  { name: "Customized college list", detail: "Five schools aligned with the student, plus suggested events and contacts for further questions.", price: "$200 flat fee" },
+  { name: "College & scholarship interview preparation", detail: "One-on-one practice with common interview questions and tailored feedback on responses.", price: "$75/hour" },
+] as const;
+
 export const danceProgram = programs.find((program) => program.slug === "dance") ?? programs[0];
 
 export type ProgramGroup = {
@@ -130,6 +140,7 @@ export const interestFallback: SelectOption = { value: "not-sure", label: "Not s
 export const interestOptions: SelectOption[] = [
   interestFallback,
   ...programs.map((program) => ({ value: program.slug, label: program.name })),
+  { value: "individual-support", label: "One-on-one services" },
 ];
 
 export function contactHref(params: { iam?: string; interest?: string } = {}): string {
@@ -155,8 +166,8 @@ export const audiences: Audience[] = [
   },
   {
     name: "College Students",
-    action: "Ask as a student",
-    href: contactHref({ iam: "student" }),
+    action: "Explore one-on-one support",
+    href: `${routes.programs}#individual-support`,
   },
   {
     name: "Parents & Guardians",

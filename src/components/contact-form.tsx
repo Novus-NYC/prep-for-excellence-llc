@@ -69,7 +69,7 @@ export default function ContactForm() {
     }
 
     const roleLabel = labelFor(roleOptions, role);
-    const subject = `Workshop inquiry from ${name} (${roleLabel})`;
+    const subject = `Prep For Excellence inquiry from ${name} (${roleLabel})`;
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
