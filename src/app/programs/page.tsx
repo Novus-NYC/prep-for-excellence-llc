@@ -5,7 +5,7 @@ import PhotoFrame from "@/components/photo-frame";
 import { capitalize, countWord } from "@/lib/format";
 import { photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
-import { comparison, contactHref, formats, pathway, programGroups, programs } from "@/lib/programs";
+import { comparison, contactHref, formats, pathway, programGroups, programs, workshopTiers, workshopTopics } from "@/lib/programs";
 import { mailtoHref, routes, site } from "@/lib/site";
 
 const programNames = programs.map((program) => program.name).join(", ");
@@ -87,9 +87,7 @@ export default function ProgramsPage() {
                         <h3 className="font-display text-[1.5rem] font-medium leading-tight text-ink lg:text-[1.875rem]">
                           {program.name}
                         </h3>
-                        {program.description ? (
-                          <p className="mt-2 max-w-xl text-base text-muted">{program.description}</p>
-                        ) : null}
+                        <p className="mt-2 max-w-xl text-base text-muted">{program.description}</p>
                         {group.id === "performing-arts" ? (
                           <Link href={routes.performingArts} className="text-cta mt-1 text-base text-purple">
                             See the {pathway.name}
@@ -115,6 +113,41 @@ export default function ProgramsPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="bg-white" aria-labelledby="workshops-title">
+        <div className="shell grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
+          <div className="reveal lg:col-span-4">
+            <p className="label text-green-text">For schools & organizations</p>
+            <h2 id="workshops-title" className="mt-4 font-display text-display-lg font-medium text-purple">Inside the workshops</h2>
+            <p className="mt-4 max-w-sm text-lg">Choose a topic or develop a custom session together. Workshops include a planning call and a staff recap.</p>
+            <Link href={contactHref({ iam: "school" })} className="btn btn-outline mt-7">Plan a workshop</Link>
+          </div>
+          <div className="lg:col-span-8">
+            <ul className="border-b border-line">
+              {workshopTopics.map((topic) => (
+                <li key={topic.title} className="reveal grid gap-2 border-t border-line py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] sm:gap-6">
+                  <h3 className="font-display text-xl font-medium text-purple">{topic.title}</h3>
+                  <p className="text-base text-muted">{topic.detail}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10">
+              <h3 className="font-display text-display-md font-medium text-purple">Workshop formats</h3>
+              <p className="mt-2 text-base text-muted">Each 60-minute session serves up to 30 students. Starting prices are shown below.</p>
+              <ul className="mt-5 grid gap-4 md:grid-cols-3">
+                {workshopTiers.map((tier) => (
+                  <li key={tier.name} className="border-t-[3px] border-green bg-mint p-5">
+                    <h4 className="font-display text-xl font-medium text-purple">{tier.name}</h4>
+                    <p className="mt-2 text-base text-muted">{tier.detail}</p>
+                    <p className="mt-4 font-semibold text-ink">From {tier.price}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-base text-muted">Nine-session quarter workshop packages are also available.</p>
+            </div>
+          </div>
         </div>
       </section>
 

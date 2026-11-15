@@ -1,8 +1,7 @@
 import { routes } from "./site";
 
-// Service names and formats are copied exactly from the client's current
-// site. The client has not published descriptions, grade levels, lengths or
-// prices for any of them, so `description` stays null until they are supplied.
+// Service names come from the existing site; details below are based on the
+// client's school, family, and dance service sheets supplied in November 2026.
 
 export type ProgramGroupId = "college-career" | "family" | "performing-arts";
 
@@ -10,7 +9,7 @@ export type Program = {
   slug: string;
   name: string;
   group: ProgramGroupId;
-  description: string | null;
+  description: string;
 };
 
 export const programs: Program[] = [
@@ -18,39 +17,53 @@ export const programs: Program[] = [
     slug: "college-readiness",
     name: "College Readiness & Transition",
     group: "college-career",
-    description: null,
+    description: "Interactive workshops on choosing post-secondary options, academic and social life on campus, study abroad, and the transition to college.",
   },
   {
     slug: "scholarships",
     name: "Scholarships & Opportunity Strategy",
     group: "college-career",
-    description: null,
+    description: "Explore scholarship opportunities, develop application strategies, and learn how to present your experience and strengths.",
   },
   {
     slug: "career-readiness",
     name: "Career & Professional Readiness",
     group: "college-career",
-    description: null,
+    description: "Build practical skills in resumes, LinkedIn, networking, email etiquette, goal setting, and finding on-campus work.",
   },
   {
     slug: "admissions-interview",
     name: "College Admissions & Interview Prep",
     group: "college-career",
-    description: null,
+    description: "Practice college and scholarship interviews and prepare for the application process, including performing arts auditions.",
   },
   {
     slug: "family-workshops",
     name: "Parent & Family Workshops",
     group: "family",
-    description: null,
+    description: "Interactive sessions for parents and families on planning for college, scholarships, and supporting a student's next steps.",
   },
   {
     slug: "dance",
     name: "Dance & Performing Arts Classes",
     group: "performing-arts",
-    description: null,
+    description: "Ballet, modern, jazz, hip-hop, and Choreography 101 classes, with professional-style training and performance preparation.",
   },
 ];
+
+export const workshopTopics = [
+  { title: "College transition & success", detail: "Academics, social life, dorming, time management, and study habits." },
+  { title: "Scholarships & applications", detail: "The scholarship search, interviews, and communicating your value." },
+  { title: "Career & professional skills", detail: "Resumes, LinkedIn, networking, email etiquette, and on-campus employment." },
+  { title: "Well-being & belonging", detail: "Managing stress, imposter syndrome, and attending a PWI as a BIPOC student." },
+  { title: "Custom workshops", detail: "Develop a topic with Prep For Excellence for your students or organization." },
+] as const;
+
+export const workshopTiers = [
+  { name: "Economy", detail: "Interactive presentation and Q&A", price: "$750" },
+  { name: "Standard", detail: "Presentation, Q&A, and a guided activity", price: "$850" },
+  { name: "Premium", detail: "Presentation, Q&A, guided activity, and tailored resources", price: "$950" },
+] as const;
 
 export const danceProgram = programs.find((program) => program.slug === "dance") ?? programs[0];
 
