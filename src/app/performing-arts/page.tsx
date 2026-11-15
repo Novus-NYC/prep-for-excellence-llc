@@ -5,7 +5,7 @@ import PhotoFrame from "@/components/photo-frame";
 import { capitalize, countWord } from "@/lib/format";
 import { photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
-import { contactHref, danceProgram, pathway, programs } from "@/lib/programs";
+import { contactHref, danceOfferings, danceProgram, danceStyles, pathway, programs } from "@/lib/programs";
 import { routes } from "@/lib/site";
 
 const askAboutDance = {
@@ -65,6 +65,31 @@ export default function PerformingArtsPage() {
               blockY="0.5rem"
               className="md:ml-auto"
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-lilac" aria-labelledby="dance-details-title">
+        <div className="shell grid gap-10 py-16 lg:grid-cols-12 lg:py-24">
+          <div className="reveal lg:col-span-4">
+            <p className="label text-green-text">Dance services</p>
+            <h2 id="dance-details-title" className="mt-4 font-display text-display-lg font-medium text-purple">Movement, practice, opportunity.</h2>
+            <p className="mt-4 text-lg">Classes are designed for groups of 5 to 20 students, with 45 to 60 minute sessions and a 90 minute option.</p>
+          </div>
+          <div className="lg:col-span-8">
+            <h3 className="font-display text-display-md font-medium text-purple">Styles offered</h3>
+            <ul className="mt-5 flex flex-wrap gap-3">
+              {danceStyles.map((style) => <li key={style} className="border border-purple/25 bg-white px-4 py-2 font-semibold text-purple">{style}</li>)}
+            </ul>
+            <ul className="mt-9 border-b border-purple/20">
+              {danceOfferings.map((offering) => (
+                <li key={offering.title} className="reveal grid gap-2 border-t border-purple/20 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] sm:gap-6">
+                  <h3 className="font-display text-xl font-medium text-purple">{offering.title}</h3>
+                  <p className="text-base text-ink">{offering.detail}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-base text-muted">Single classes and 5, 10, and 20 session packages are available. Ask about a schedule and pricing for your school.</p>
           </div>
         </div>
       </section>

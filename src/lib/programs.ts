@@ -65,6 +65,14 @@ export const workshopTiers = [
   { name: "Premium", detail: "Presentation, Q&A, guided activity, and tailored resources", price: "$950" },
 ] as const;
 
+export const danceStyles = ["Ballet", "Modern", "Jazz", "Choreography 101", "Hip-hop"] as const;
+
+export const danceOfferings = [
+  { title: "Warm-up & technique", detail: "Age-appropriate flexibility, strength, and coordination exercises, followed by technique adapted to students' experience." },
+  { title: "Choreography & performance", detail: "Across-the-floor training, rehearsals, and optional choreography for school performances." },
+  { title: "Dance career workshops", detail: "LinkedIn for dancers, artist portfolios, scholarships, dance resumes, and social media for opportunities in the arts." },
+] as const;
+
 export const danceProgram = programs.find((program) => program.slug === "dance") ?? programs[0];
 
 export type ProgramGroup = {
