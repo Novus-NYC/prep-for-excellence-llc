@@ -52,6 +52,11 @@ export const photos = {
   },
 } satisfies Record<string, Photo>;
 
+// St. John's publishes this wordmark as a digital download. Keep it separate
+// from the client's original composite strip so neither asset is altered.
+export const stJohnsLogoSrc =
+  "https://www.stjohns.edu/sites/default/files/2019-03/twitter_header_logo.png";
+
 // The past clients strip is one 1598 px wide file with fourteen logos in
 // three rows. On a phone the whole strip would shrink each logo to a
 // thumbnail, so below md the same file is shown as fourteen crop windows,

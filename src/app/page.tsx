@@ -8,7 +8,7 @@ import PhotoFrame from "@/components/photo-frame";
 import ScholarshipStat from "@/components/scholarship-stat";
 import VendorDetails from "@/components/vendor-details";
 import { countWord } from "@/lib/format";
-import { pastClientLogos, photos } from "@/lib/images";
+import { pastClientLogos, photos, stJohnsLogoSrc } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
 import { comparison, pathway } from "@/lib/programs";
 import { routes, site, siteUrlIsSet, socialLinks, statSentence } from "@/lib/site";
@@ -269,6 +269,18 @@ export default function HomePage() {
                   sizes="(min-width: 640px) 170vw, 260vw"
                 />
               ))}
+            </div>
+            <div className="mt-6 flex justify-center border-t border-line pt-6">
+              <div className="relative h-24 w-64 max-w-full">
+                <Image
+                  src={stJohnsLogoSrc}
+                  alt="St. John's University"
+                  fill
+                  unoptimized
+                  sizes="256px"
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
           <VendorDetails className="reveal mt-10 max-w-3xl" />
