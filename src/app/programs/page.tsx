@@ -76,7 +76,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* The six services, grouped, set like the enclosure list of a packet. */}
-      <section className="bg-mint" aria-label="Programs by group">
+      <section id="program-list" className="bg-mint" aria-label="Programs by group">
         <div className="shell flex flex-col gap-14 py-16 lg:gap-20 lg:py-24">
           {programGroups.map((group) => {
             const groupPrograms = programs.filter((program) => program.group === group.id);

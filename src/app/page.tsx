@@ -11,7 +11,7 @@ import { countWord } from "@/lib/format";
 import { pastClientLogos, photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
 import { comparison, pathway } from "@/lib/programs";
-import { primaryCta, routes, site, siteUrlIsSet, socialLinks, statSentence } from "@/lib/site";
+import { routes, site, siteUrlIsSet, socialLinks, statSentence } from "@/lib/site";
 import { headlineWins, wins, winsIntro } from "@/lib/wins";
 
 export const metadata = pageMetadata({
@@ -61,11 +61,11 @@ export default function HomePage() {
               {site.instagramSummary} for students, families and schools.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-9">
-              <Link href={primaryCta.href} className="btn btn-action">
-                {primaryCta.label}
+              <Link href={`${routes.programs}#individual-support`} className="btn btn-action">
+                Explore 1:1 services
               </Link>
-              <Link href={routes.programs} className="btn btn-outline">
-                See the programs
+              <Link href={`${routes.programs}#program-list`} className="btn btn-outline">
+                Explore programs
               </Link>
             </div>
           </div>
