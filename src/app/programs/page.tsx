@@ -142,7 +142,7 @@ export default function ProgramsPage() {
           <div className="reveal lg:col-span-4">
             <p className="label text-green-text">For schools & organizations</p>
             <h2 id="workshops-title" className="mt-4 font-display text-display-lg font-medium text-purple">Inside the workshops</h2>
-            <p className="mt-4 max-w-sm text-lg">Choose a topic or develop a custom session together. Workshops include a planning call and a staff recap.</p>
+            <p className="mt-4 max-w-sm text-lg">Choose a topic or develop a custom session together. Every workshop includes planning before the session and a written recap afterward.</p>
             <Link href={contactHref({ iam: "school" })} className="btn btn-outline mt-7">Plan a workshop</Link>
           </div>
           <div className="lg:col-span-8">
@@ -176,6 +176,10 @@ export default function ProgramsPage() {
                   <li key={tier.name} className="border-t-[3px] border-green bg-mint p-5">
                     <h4 className="font-display text-xl font-medium text-purple">{tier.name}</h4>
                     <p className="mt-2 text-base text-muted">{tier.detail}</p>
+                    <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-ink">
+                      <li>Pre-workshop planning call</li>
+                      <li>Post-workshop written recap</li>
+                    </ul>
                     <p className="mt-4 font-semibold text-ink">From {tier.price}</p>
                   </li>
                 ))}
