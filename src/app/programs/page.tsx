@@ -5,7 +5,7 @@ import PhotoFrame from "@/components/photo-frame";
 import { capitalize, countWord } from "@/lib/format";
 import { photos } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
-import { comparison, contactHref, formats, individualServices, pathway, programGroups, programs, workshopTiers, workshopTopics } from "@/lib/programs";
+import { comparison, contactHref, formats, individualServices, pathway, popularWorkshops, programGroups, programs, workshopTiers, workshopTopics } from "@/lib/programs";
 import { mailtoHref, routes, site } from "@/lib/site";
 
 const programNames = programs.map((program) => program.name).join(", ");
@@ -154,6 +154,20 @@ export default function ProgramsPage() {
                 </li>
               ))}
             </ul>
+            <div className="mt-10">
+              <h3 className="font-display text-display-md font-medium text-purple">Popular workshops</h3>
+              <ul className="mt-5 border-b border-line">
+                {popularWorkshops.map((workshop, index) => (
+                  <li key={workshop.title} className="reveal grid gap-2 border-t border-line py-6 sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:gap-5">
+                    <span className="font-display text-xl font-medium text-green-text" aria-hidden="true">{index + 1}.</span>
+                    <div>
+                      <h4 className="font-display text-2xl font-medium text-purple">{workshop.title}</h4>
+                      <p className="mt-2 max-w-2xl text-base text-muted">{workshop.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="mt-10">
               <h3 className="font-display text-display-md font-medium text-purple">Workshop formats</h3>
               <p className="mt-2 text-base text-muted">Each 60-minute session serves up to 30 students. Starting prices are shown below.</p>

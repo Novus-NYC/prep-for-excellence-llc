@@ -59,6 +59,21 @@ export const workshopTopics = [
   { title: "Custom workshops", detail: "Develop a topic with Prep For Excellence for your students or organization." },
 ] as const;
 
+export const popularWorkshops = [
+  {
+    title: "Scholarships 101",
+    description: "Students learn the different types of scholarships, including opportunities beyond academic and athletic awards. They explore what committees look for, common application requirements, and strategies to strengthen their candidacy before applying.",
+  },
+  {
+    title: "Networking Into Opportunities",
+    description: "Students learn to build meaningful connections, introduce themselves confidently, and use networking to uncover scholarships, internships, mentorships, and other opportunities beyond online searches.",
+  },
+  {
+    title: "LinkedIn for Scholarships",
+    description: "Students learn how to highlight accomplishments in a professional profile, discover scholarships and career opportunities, connect with professionals, and use posts to increase visibility. They gain the skills to build a profile when they are ready.",
+  },
+] as const;
+
 export const workshopTiers = [
   { name: "Economy", detail: "Interactive presentation and Q&A", price: "$750" },
   { name: "Standard", detail: "Presentation, Q&A, and a guided activity", price: "$850" },
