@@ -8,7 +8,7 @@ import PhotoFrame from "@/components/photo-frame";
 import ScholarshipStat from "@/components/scholarship-stat";
 import VendorDetails from "@/components/vendor-details";
 import { countWord } from "@/lib/format";
-import { pastClientLogos, photos, stJohnsLogoSrc } from "@/lib/images";
+import { pastClientLogos, photos, tobinLogoSrc } from "@/lib/images";
 import { pageMetadata } from "@/lib/metadata";
 import { comparison, pathway } from "@/lib/programs";
 import { routes, site, siteUrlIsSet, socialLinks, statSentence } from "@/lib/site";
@@ -271,13 +271,13 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-6 flex justify-center border-t border-line pt-6">
-              <div className="relative h-24 w-64 max-w-full">
+              <div className="relative h-56 w-56 sm:h-64 sm:w-64">
                 <Image
-                  src={stJohnsLogoSrc}
-                  alt="St. John's University"
+                  src={tobinLogoSrc}
+                  alt="Tobin College of Business, St. John's University"
                   fill
                   unoptimized
-                  sizes="256px"
+                  sizes="(min-width: 640px) 256px, 224px"
                   className="object-contain"
                 />
               </div>
